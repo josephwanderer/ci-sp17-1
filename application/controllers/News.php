@@ -7,12 +7,14 @@ class News extends CI_Controller {
         parent::__construct();
         $this->load->model('news_model');
         $this->load->helper('url_helper');
+        $this->config->set_item('banner','News');
     }
 
     public function index()
     {
         $data['news'] = $this->news_model->get_news();
-        $data['title'] = 'News archive';
+        //$data['title'] = 'News archive';
+        $this->config->set_item('title','News Archive');
 
         //$this->load->view('templates/header', $data);
         $this->load->view('news/index', $data);
@@ -22,6 +24,7 @@ class News extends CI_Controller {
     public function view($slug = NULL)
     {
         $data['news_item'] = $this->news_model->get_news($slug);
+        $this->config->set_item('title','News Item');
 
         if (empty($data['news_item']))
         {
@@ -40,6 +43,7 @@ class News extends CI_Controller {
         $this->load->helper('form');
         $this->load->library('form_validation');
 
+        $this->config->set_item('title','Create News Item');
         $data['title'] = 'Create a news item';
 
         $this->form_validation->set_rules('title', 'Title', 'required');

@@ -5,6 +5,8 @@ $this->load->view($this->config->item('theme') . 'header');
 
 ?>
 
+<h2><?=$this->config->item('title')?></h2>
+
 <p><b>Yay! You ccessfully created a news item!</b></p>
 <p>Now I suppose you want to see it?</p>
 

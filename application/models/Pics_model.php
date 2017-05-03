@@ -7,7 +7,7 @@ class Pics_model extends CI_Model {
 
     }
     
-    public function get_pics($slug = 'polar,bear')
+    public function get_pics($slug = 'bear')
     {
         
         $api_key = 'flickr-api-key-goes-here';

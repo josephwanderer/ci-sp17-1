@@ -9,7 +9,7 @@ class Pics extends CI_Controller {
         $this->load->helper('url_helper');
     }
 
-    public function index($slug = NULL)
+    public function index($slug = 'bears')
     {
         
         $data['pics'] = $this->pics_model->get_pics($slug);
@@ -20,7 +20,7 @@ class Pics extends CI_Controller {
         //$this->load->view('templates/footer');
     }
 
-    public function view($slug = NULL)
+    public function view($slug = 'bears')
     {
         
         $data['pics'] = $this->pics_model->get_pics($slug);
