@@ -1,6 +1,6 @@
 <?php
 // application/controllers/Pics.php
-class News extends CI_Controller {
+class Pics extends CI_Controller {
 
     public function __construct()
     {
@@ -9,9 +9,10 @@ class News extends CI_Controller {
         $this->load->helper('url_helper');
     }
 
-    public function index()
+    public function index($slug = NULL)
     {
-        $data['pics'] = $this->pics_model->get_pics();
+        
+        $data['pics'] = $this->pics_model->get_pics($slug);
         $data['title'] = 'Pics aggregator';
 
         //$this->load->view('templates/header', $data);
@@ -21,18 +22,25 @@ class News extends CI_Controller {
 
     public function view($slug = NULL)
     {
-        $data['pic'] = $this->pics_model->get_pics($slug);
-
-        if (empty($data['pic']))
-        {
-            show_404();
-        }
-
-        $data['title'] = $data['pic']['title'];
+        
+        $data['pics'] = $this->pics_model->get_pics($slug);
+        $data['title'] = 'Pics aggregator';
 
         //$this->load->view('templates/header', $data);
-        $this->load->view('pics/view', $data);
-        //$this->load->view('templates/footer', $data);
+        $this->load->view('pics/index', $data);
+        //$this->load->view('templates/footer');
+//        $data['pic'] = $this->pics_model->get_pics($slug);
+//
+//        if (empty($data['pic']))
+//        {
+//            show_404();
+//        }
+//
+//        $data['title'] = $data['pic']['title'];
+//
+//        //$this->load->view('templates/header', $data);
+//        $this->load->view('pics/view', $data);
+//        //$this->load->view('templates/footer', $data);
     }
     
 //    public function create()
