@@ -6,7 +6,7 @@ class News extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('news_model');
-        $this->load->helper('url_helper');
+        $this->load->helper('url');
         $this->config->set_item('banner','News');
     }
 
@@ -57,10 +57,24 @@ class News extends CI_Controller {
 
         }
         else
-        {// say thanks for entering data!
-            $this->news_model->set_news();
+        {//Show the newly created item
+            $slug = $this->news_model->set_news();
+            
+            if($slug)
+            {//Data looks good
+                
+            feedback('News item successfully created!','notice');
+            redirect('news/view/' . $slug);
+            }else{//
+            feedback('News item NOT created!','warning');
+            redirect('news/create');
+            }
+            
+            
+            //$data['title'] = 'Item Entered';
+            
             //$this->load->view('templates/header', $data);
-            $this->load->view('news/success', $data);
+            //$this->load->view('news/success', $data);
             //$this->load->view('templates/footer', $data);
         }
             
