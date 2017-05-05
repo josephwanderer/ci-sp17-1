@@ -27,6 +27,7 @@
 			<li class="active"><a href="#" title="">Active Link</a></li>
 			<li><?=anchor('news','News')?></li>
 			<li><?=anchor('news/create','Create News Item')?></li>
+              <li><?=anchor('pics','Pics')?></li>
           </ul>
         </div>
       </div>

@@ -6,13 +6,12 @@ class Pics extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('pics_model');
-        $this->load->helper('url_helper');
+        $this->load->helper('url');
     }
 
-    public function index($slug = 'bears')
+    public function index($slug = null)
     {
         
-        $data['pics'] = $this->pics_model->get_pics($slug);
         $data['title'] = 'Pics aggregator';
 
         //$this->load->view('templates/header', $data);
@@ -25,9 +24,11 @@ class Pics extends CI_Controller {
         
         $data['pics'] = $this->pics_model->get_pics($slug);
         $data['title'] = 'Pics aggregator';
+//var_dump($data['pics']);
+//        die;
 
         //$this->load->view('templates/header', $data);
-        $this->load->view('pics/index', $data);
+        $this->load->view('pics/view', $data);
         //$this->load->view('templates/footer');
 //        $data['pic'] = $this->pics_model->get_pics($slug);
 //

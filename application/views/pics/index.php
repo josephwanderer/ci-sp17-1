@@ -12,17 +12,11 @@ $this->load->view($this->config->item('theme') . 'header');
 
 
 
-foreach($pics as $pic){
+    echo
+    '<p><a href="' . site_url('pics/view/mariners') . '">Mariners pics</a></p>' .
+        '<p><a href="' . site_url('pics/view/seahawks') . '">Seahawks pics</a></p>' .
+        '<p><a href="' . site_url('pics/view/sounders') . '">Sounders pics</a></p>';
 
-    $size = 'm';
-    $photo_url = '
-    http://farm'. $pic->farm . '.staticflickr.com/' . $pic->server . '/' . $pic->id . '_' . $pic->secret . '_' . $size . '.jpg';
-
-    
-    echo "<div><p>$pic->title</p>"; 
-    echo "<img title='" . $pic->title . "' src='" . $photo_url . "' /></div>";
- 
-}
 ?>
 
 
